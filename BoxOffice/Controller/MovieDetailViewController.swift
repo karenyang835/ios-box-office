@@ -51,18 +51,16 @@ final class MovieDetailViewController: UIViewController {
         dispatchGroup.enter()
         
         dataManager?.boxOfficeInfo.fetchData { [weak self] result in
-            switch result {
-            case .success(let data):
-                let infoUIModel = MovieDetailUIModel(data: data.movieInfoResult.movieInfo)
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    let infoUIModel = MovieDetailUIModel(data: data.movieInfoResult.movieInfo)
                     self?.descriptionStackView.update(infoUIModel)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
                     self?.presentErrorAlert(error: error, title: "\(BoxOfficeError.failedToGetData)")
                 }
+                self?.dispatchGroup.leave()
             }
-            self?.dispatchGroup.leave()
         }
     }
     
@@ -82,7 +80,7 @@ final class MovieDetailViewController: UIViewController {
             }
         }
     }
-        
+    
     private func startLoading() {
         loadingView.startAnimating()
         posterImageView.isHidden = true
