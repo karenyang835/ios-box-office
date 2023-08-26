@@ -27,7 +27,7 @@ extension APIType {
     
     var header: String? {
         switch self {
-        case .movieImage(_):
+        case .movieImage:
             return "KakaoAK " + apiKey
         default:
             return nil
@@ -36,27 +36,27 @@ extension APIType {
 
     var apiKey: String {
         switch self {
-        case .movie(_), .boxOffice(_):
+        case .movie, .boxOffice:
             return Bundle.main.kobisApiKey
-        case .movieImage(_):
+        case .movieImage:
             return Bundle.main.kakaoApiKey
         }
     }
 
     private var scheme: String {
         switch self {
-        case .movie(_), .boxOffice(_):
+        case .movie, .boxOffice:
             return "http"
-        case .movieImage(_):
+        case .movieImage:
             return "https"
         }
     }
 
     private var host: String {
         switch self {
-        case .movie(_), .boxOffice(_):
+        case .movie, .boxOffice:
             return "kobis.or.kr"
-        case .movieImage(_):
+        case .movieImage:
             return "dapi.kakao.com"
         }
     }
