@@ -10,7 +10,7 @@ import UIKit
 final class MovieManager {
     let boxOfficeInfo: BoxOfficeManager<MovieInfo>
     private let movieImage: BoxOfficeManager<MovieImage>
-    private var imageDocument: Document?
+    private var imageDocument: ImageInfo?
 
     init(movieCode: String, movieName: String, session: URLSession = URLSession.shared) {
         self.boxOfficeInfo = BoxOfficeManager<MovieInfo>(apiType: .movie(movieCode), model: NetworkManager(session: session))

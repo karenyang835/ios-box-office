@@ -5,7 +5,7 @@
 //  Created by karen on 2023/08/19.
 //
 
-struct Document: Decodable {
+struct ImageInfo: Decodable {
     let url: String
     let width: Int
     let height: Int

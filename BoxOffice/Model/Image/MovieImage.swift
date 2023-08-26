@@ -6,5 +6,5 @@
 //
 
 struct MovieImage: Decodable {
-    let documents: [Document]
+    let documents: [ImageInfo]
 }
