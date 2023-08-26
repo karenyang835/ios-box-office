@@ -12,7 +12,7 @@ protocol NetworkService {
 }
 
 extension NetworkService {
-    func handleResponse(data: Data?, response: URLResponse?, error: Error?, completion: @escaping (Result<Data, BoxOfficeError>) -> Void) {
+    func processAPIResponse(data: Data?, response: URLResponse?, error: Error?, completion: @escaping (Result<Data, BoxOfficeError>) -> Void) {
         guard error == nil else {
             completion(.failure(.failureRequest))
             return
