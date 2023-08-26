@@ -22,8 +22,7 @@ extension Bundle {
         guard let file = path(forResource: "APIKEY", ofType: "plist"),
               let resource = NSDictionary(contentsOfFile: file),
               let key = resource["KakaoAPIKey"] as? String else {
-            fatalError("\(BoxOfficeError.invalidAPIKey)")
-            
+            fatalError("\(BoxOfficeError.invalidAPIKey)")            
         }
         
         return key
